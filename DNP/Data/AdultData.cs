@@ -5,58 +5,59 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
 using FileData;
+using Microsoft.EntityFrameworkCore;
 using Models;
 
 namespace DNP.Data
 {
     public class AdultData : IAdultData
     {
-        private FileContext adultFileContext;
+        private AdultContext adultContext;
 
-        public AdultData()
+        public AdultData(AdultContext adultContext)
         {
-
-            adultFileContext = new FileContext();
-
+            this.adultContext = adultContext;
         }
 
        
 
-        public IList<Adult> GetAdults()
+        public async Task<List<Adult>> GetAdults()
         {
            
-            return adultFileContext.Adults;
+            return await adultContext.Adults.Include(j => j.JobTitle).ToListAsync();
             
         }
 
-        public Adult AddAdults(Adult adult)
+        public async Task<Adult> AddAdults(Adult adult)
         {
-            int max = adultFileContext.Adults.Max(adult => adult.Id);
-            adult.Id =(++max);
-            adultFileContext.Adults.Add(adult);
-            adultFileContext.SaveChanges();
+            await adultContext.Adults.AddAsync(adult);
+            await adultContext.Jobs.AddAsync(adult.JobTitle);
+            await adultContext.SaveChangesAsync();
 
             return adult;
+            
         }
 
-        public void RemoveAdults(int adultId)
+        public async Task RemoveAdults(int adultId)
         {
             
-            Adult toRemove = adultFileContext.Adults.First(a => a.Id == adultId);
-            adultFileContext.Adults.Remove(toRemove);
-            adultFileContext.SaveChanges();
+            Adult toRemove = await adultContext.Adults.FirstOrDefaultAsync(a => a.Id == adultId);
+            adultContext.Adults.Remove(toRemove);
+            adultContext.SaveChanges();
         }
 
         public async Task<Adult> Update(Adult adult)
         {
-            adultFileContext.Update(adult);
+            adultContext.Update(adult);
+
+            await adultContext.SaveChangesAsync();
 
             return adult;
         }
 
-        public Adult Get(int id)
+        public async Task<Adult> Get(int id)
         {
-            return adultFileContext.Adults.FirstOrDefault(a => a.Id == id);
+            return adultContext.Adults.FirstOrDefault(a => a.Id == id);
         }
     }
 }

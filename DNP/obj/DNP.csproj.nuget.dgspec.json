@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\amara\\OneDrive\\Desktop\\DNP-master\\DNP\\DNP.csproj": {}
+    "C:\\Users\\amara\\RiderProjects\\DNP_Opgave2_update\\DNP\\DNP.csproj": {}
   },
   "projects": {
-    "C:\\Users\\amara\\OneDrive\\Desktop\\DNP-master\\DNP\\DNP.csproj": {
+    "C:\\Users\\amara\\RiderProjects\\DNP_Opgave2_update\\DNP\\DNP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\amara\\OneDrive\\Desktop\\DNP-master\\DNP\\DNP.csproj",
+        "projectUniqueName": "C:\\Users\\amara\\RiderProjects\\DNP_Opgave2_update\\DNP\\DNP.csproj",
         "projectName": "DNP",
-        "projectPath": "C:\\Users\\amara\\OneDrive\\Desktop\\DNP-master\\DNP\\DNP.csproj",
+        "projectPath": "C:\\Users\\amara\\RiderProjects\\DNP_Opgave2_update\\DNP\\DNP.csproj",
         "packagesPath": "C:\\Users\\amara\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\amara\\OneDrive\\Desktop\\DNP-master\\DNP\\obj\\",
+        "outputPath": "C:\\Users\\amara\\RiderProjects\\DNP_Opgave2_update\\DNP\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\amara\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -38,6 +38,20 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[5.0.12, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"

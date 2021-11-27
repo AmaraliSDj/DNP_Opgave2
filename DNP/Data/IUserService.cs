@@ -1,10 +1,11 @@
 
+using System.Threading.Tasks;
 using ToDo.Models;
 
 namespace DNP.Data
 {
     public interface IUserService
     {
-        User ValidateUser(string userName, string Password);
+        Task<User> ValidateUser(string userName, string Password);
     }
 }

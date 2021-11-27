@@ -24,7 +24,7 @@ namespace DNP.Controllers
         {
             try
             {
-                IList<Adult> adults = adultData.GetAdults();
+                IList<Adult> adults = await adultData.GetAdults();
                 Console.WriteLine(adults);
                 return Ok(adults);
             }
@@ -42,7 +42,7 @@ namespace DNP.Controllers
         {
             try
             {
-                Adult adult =  adultData.Get(id);
+                Adult adult =  await adultData.Get(id);
                 return Ok(adult);
             }
             catch (Exception e)
@@ -58,7 +58,7 @@ namespace DNP.Controllers
         {
             try
             {
-                Adult adultAdded = adultData.AddAdults(adult);
+                Adult adultAdded = await adultData.AddAdults(adult);
                 return Created($"/{adultAdded.Id}", adultAdded);
             }
             catch (Exception e)

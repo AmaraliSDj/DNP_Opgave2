@@ -6,15 +6,15 @@ namespace DNP.Data
 {
     public interface IAdultData
     {
-        IList<Adult> GetAdults();
+        Task<List<Adult>> GetAdults();
 
-        Adult AddAdults(Adult adult);
+        Task<Adult> AddAdults(Adult adult);
 
-        void RemoveAdults(int adultId);
+        Task RemoveAdults(int adultId);
 
         Task<Adult> Update(Adult adult);
 
-        Adult Get(int id);
+        Task<Adult>  Get(int id);
         
     }
 }
